@@ -1,0 +1,73 @@
+#include <HardwareSerial.h>
+
+HardwareSerial mySerial(2);
+
+void setup() {
+  Serial.begin(115200);
+  mySerial.begin(115200, SERIAL_8N1, 16, 17); // RX = GPIO16, TX = GPIO17
+}
+
+void loop() {
+  // Gửi ký tự đầu tiên là số 1
+  mySerial.write('1');
+  delay(100); // Đợi một chút để đảm bảo dữ liệu được gửi đi
+
+  // Gửi chuỗi 7 số tiếp theo
+  char dataToSend[7] = {'1', '2', '3', '4', '5', '6', '7'};
+  mySerial.write(dataToSend, 7);
+
+  // Đợi một khoảng thời gian trước khi gửi lại
+  delay(1000);
+}
+///////////////////////////////////////////////////////////////
+#include "stm32f1xx_hal.h"
+
+UART_HandleTypeDef huart2;
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
+
+int main(void) {
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+
+  uint8_t rxData;
+  uint8_t receivedData[7];
+
+  while (1) {
+    if (HAL_UART_Receive(&huart2, &rxData, 1, HAL_MAX_DELAY) == HAL_OK) {
+      if (rxData == '1') {
+        if (HAL_UART_Receive(&huart2, receivedData, 7, HAL_MAX_DELAY) == HAL_OK) {
+          // Xử lý dữ liệu nhận được mà không in ra
+          // Ví dụ: Lưu dữ liệu vào bộ nhớ hoặc thực hiện các thao tác khác
+        }
+      }
+      // Nếu rxData == '0', không làm gì cả
+    }
+  }
+}
+
+void SystemClock_Config(void) {
+  // Cấu hình clock hệ thống
+}
+
+static void MX_GPIO_Init(void) {
+  // Cấu hình GPIO
+}
+
+static void MX_USART2_UART_Init(void) {
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK) {
+    // Xử lý lỗi
+  }
+}

@@ -1,0 +1,4 @@
+uart_com.c:24:6:HAL_UART_RxCpltCallback	16	static
+uart_com.c:33:6:clear_buffer	16	static
+uart_com.c:39:6:command_parser_fsm	16	static
+uart_com.c:59:6:uart_communication_fsm	8	static
