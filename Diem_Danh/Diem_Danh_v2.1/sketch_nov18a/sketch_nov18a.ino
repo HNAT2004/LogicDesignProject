@@ -5,7 +5,7 @@
 
 const char* ssid = "ACLAB";         // Tên mạng WiFi
 const char* password = "ACLAB2023";  // Mật khẩu WiFi
-const char* serverIP = "10.28.128.148"; // Địa chỉ IP của máy tính
+const char* serverIP = "192.168.238.152"; // Địa chỉ IP của máy tính
 const int serverPort = 8080;            // Cổng của web server
 
 #define RST_PIN         4
@@ -55,12 +55,12 @@ void loop() {
         Serial.println(response); // In dữ liệu ra Serial Monitor
         
       } else {
-        // String data = "ERROR";
-        // for (int i = 0; data[i] != '\0'; i++) {
-        //   uint8_t value = (uint8_t)data[i];
-        //   mySerial.write(value);
-        //   receiveAndPrintData(); // Gọi hàm nhận dữ liệu ngay sau khi gửi
-        // }
+        String data = "ERROR";
+        for (int i = 0; data[i] != '\0'; i++) {
+          uint8_t value = (uint8_t)data[i];
+          mySerial.write(value);
+          receiveAndPrintData(); // Gọi hàm nhận dữ liệu ngay sau khi gửi
+        }
         Serial.println("ERROR");
       }
 

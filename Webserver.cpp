@@ -77,7 +77,7 @@ void handleClient(SOCKET clientSocket, const std::unordered_map<std::string, std
         writeDataToCSV("D:/LogicDesignProject/Danh_Sach_Diem_Danh_Sinh_Vien.csv", it->second.second, it->second.first);
     }
     else {
-        response += "ERROR";
+        response += "INVALID";
         }
     // In UID gửi về
     std::cout << "UID received: " << uid << std::endl;
