@@ -13,6 +13,5 @@
 #define DECLINE 2
 
 extern int status;
-extern char printlcd[];
 
 #endif /* INC_GLOBAL_H_ */

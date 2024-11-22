@@ -71,6 +71,8 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define LED_BLUE1_Pin GPIO_PIN_5
 #define LED_BLUE1_GPIO_Port GPIOA
+#define LED2_Pin GPIO_PIN_10
+#define LED2_GPIO_Port GPIOB
 #define LED_BLUE_Pin GPIO_PIN_8
 #define LED_BLUE_GPIO_Port GPIOC
 #define LED_Pin GPIO_PIN_9
@@ -81,6 +83,8 @@ void Error_Handler(void);
 #define TCK_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
+#define LED1_Pin GPIO_PIN_4
+#define LED1_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

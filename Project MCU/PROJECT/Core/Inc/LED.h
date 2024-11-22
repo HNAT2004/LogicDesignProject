@@ -10,7 +10,6 @@
 
 void Init_Led(void);
 void LED_RED(void);
+void LED_YELLOW(void);
 void LED_GREEN(void);
-void LED_BLUE(void);
-
 #endif /* INC_LED_H_ */

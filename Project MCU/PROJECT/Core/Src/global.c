@@ -8,4 +8,3 @@
 #include "global.h"
 
 int status = 0;
-char printlcd[8];

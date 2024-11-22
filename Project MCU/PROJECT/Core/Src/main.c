@@ -27,8 +27,6 @@
 #include "LED.h"
 #include "fsm.h"
 #include "software_timer.h"
-#include "get_time.h"
-#include "uart.h"
 #include <string.h>
 #include <stdio.h>
 #include "uart_com.h"
@@ -119,21 +117,15 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   status = WAITING;
-  Update_Date_String();
-  Update_Time_String();
   HAL_UART_Receive_IT(&huart2,&temp,1);
-  char str[5];
-  int i = 1;
   //uint8_t n = 3;
 
   while (1)
   {
-
-
   if (buffer_flag == 1) {
-		  command_parser_fsm();
-		  buffer_flag = 0;
-	}
+	  command_parser_fsm();
+	  buffer_flag = 0;
+  }
   fsm_run();
     /* USER CODE END WHILE */
 
@@ -376,6 +368,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, LED_RED_Pin|LED_GREEN_Pin|LED_BLUE1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, LED2_Pin|LED1_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, LED_BLUE_Pin|LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
@@ -390,6 +385,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LED2_Pin LED1_Pin */
+  GPIO_InitStruct.Pin = LED2_Pin|LED1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_BLUE_Pin LED_Pin */
   GPIO_InitStruct.Pin = LED_BLUE_Pin|LED_Pin;

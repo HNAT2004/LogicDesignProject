@@ -28,9 +28,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/i2c-lcd.h ../Core/Inc/global.h ../Core/Inc/LED.h \
- ../Core/Inc/fsm.h ../Core/Inc/software_timer.h ../Core/Inc/get_time.h \
- ../Core/Inc/uart.h ../Core/Inc/uart_com.h ../Core/Inc/main.h \
- ../Core/Inc/software_timer.h
+ ../Core/Inc/fsm.h ../Core/Inc/software_timer.h ../Core/Inc/uart_com.h \
+ ../Core/Inc/main.h ../Core/Inc/software_timer.h
 
 ../Core/Inc/main.h:
 
@@ -99,10 +98,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/fsm.h:
 
 ../Core/Inc/software_timer.h:
-
-../Core/Inc/get_time.h:
-
-../Core/Inc/uart.h:
 
 ../Core/Inc/uart_com.h:
 
